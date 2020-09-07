@@ -25,18 +25,44 @@ def NLupload():
     return render_template("NLupload.html")
 
 @app.route('/NLsuccess', methods = ['GET', 'POST'])
-def upload_file():
+def NLupload_file():
     if request.method == 'POST':
         file = request.files['attach']
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-            return render_template("NLsuccess.html")
+            return render_template("success.html")
 
 @app.route("/Labelled")
 def Labelled():
     return render_template("Labelled.html")
 
+@app.route("/Lupload")
+def Lupload():
+    return render_template("Lupload.html")
+
+@app.route('/Lsuccess', methods = ['GET', 'POST'])
+def Lupload_file():
+    if request.method == 'POST':
+        file = request.files['attach']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
+            return render_template("success.html")
+
 @app.route("/Verified")
 def Verified():
     return render_template("Verified.html")
+
+@app.route("/Vupload")
+def Vupload():
+    return render_template("Vupload.html")
+
+@app.route('/Vsuccess', methods = ['GET', 'POST'])
+def Vupload_file():
+    if request.method == 'POST':
+        file = request.files['attach']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
+            return render_template("success.html")
